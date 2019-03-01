@@ -1,2 +1,0 @@
-class ExchangesController < ApplicationController
-end
