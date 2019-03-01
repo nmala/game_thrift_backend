@@ -1,6 +1,6 @@
 class GameSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :price, :image, :console, :is_game
+  attributes :id, :seller_id, :price, :image, :console, :is_game
 
-  belongs_to :user
+  belongs_to :seller
   has_one :exchange
 end
