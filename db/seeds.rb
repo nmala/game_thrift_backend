@@ -31,14 +31,14 @@ Game.destroy_all
 # SNES - 19
 # N64 - 4
 # PS1 - 7
-# Atari 2600 - 59
+# DOS - 15
 # Sega Genesis - 29
 
 def fix_cover_art(url)
   split_url = url.split('thumb')
   split_url[0] += '720p'
+  split_url[0].prepend('https:')
   fixed_url = split_url.join('')
-  fixed_url[2, fixed_url.length - 1]
 end
 
 require 'net/https'
@@ -77,10 +77,10 @@ JSON.parse(http.request(request_segagenesis).body).each do |g|
   Game.create(name: g['name'], price: rand(10..100), console: g['platforms'][0]['name'], is_game: true, seller: User.all.sample, description: g['summary'], release_date: g['first_release_date'], posted_date:  Time.now(), image: fix_cover_art(g['cover']['url']))
 end
 
-# request_atari2600 = Net::HTTP::Get.new(URI('https://api-v3.igdb.com/games'), {'user-key' => '3bb13b5f51ba32b2553da7cb0d920b0e'})
-# request_atari2600.body = 'fields name, platforms.name, first_release_date, rating, summary, cover.url;
-# where platforms = 59 & first_release_date < 946684800;
-# limit 20;'
-# JSON.parse(http.request(request_atari2600).body).each do |g|
-#   Game.create(name: g['name'], price: rand(10..100), console: g['platforms'][0]['name'], is_game: true, seller: User.all.sample, description: g['summary'], release_date: g['first_release_date'], posted_date:  Time.now(), image: fix_cover_art(g['cover']['url']))
-# end
+request_atari2600 = Net::HTTP::Get.new(URI('https://api-v3.igdb.com/games'), {'user-key' => '3bb13b5f51ba32b2553da7cb0d920b0e'})
+request_atari2600.body = 'fields name, platforms.name, first_release_date, rating, summary, cover.url;
+where (platforms = 13 & rating > 70) & first_release_date < 946684800;
+limit 20;'
+JSON.parse(http.request(request_atari2600).body).each do |g|
+  Game.create(name: g['name'], price: rand(10..100), console: g['platforms'][0]['name'], is_game: true, seller: User.all.sample, description: g['summary'], release_date: g['first_release_date'], posted_date:  Time.now(), image: fix_cover_art(g['cover']['url']))
+end
