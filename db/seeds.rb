@@ -50,7 +50,7 @@ where (platforms = 7 & rating > 70) & first_release_date < 946684800;
 limit 20;'
 # binding.pry
 JSON.parse(http.request(request_ps1).body).each do |g|
-  Game.create(name: g['name'], price: rand(10..100), console: g['platforms'][0]['name'], is_game: true, seller: User.all.sample, description: g['summary'], release_date: g['first_release_date'], posted_date:  Time.now(), image: fix_cover_art(g['cover']['url']))
+  Game.create(name: g['name'], price: rand(10..100), console: g['platforms'][0]['name'], is_game: true, seller: User.all.sample, description: g['summary'], release_date: g['first_release_date'], posted_date:  Time.now.to_i, image: fix_cover_art(g['cover']['url']))
 end
 
 request_n64 = Net::HTTP::Get.new(URI('https://api-v3.igdb.com/games'), {'user-key' => '3bb13b5f51ba32b2553da7cb0d920b0e'})
@@ -58,7 +58,7 @@ request_n64.body = 'fields name, platforms.name, first_release_date, rating, sum
 where (platforms = 4 & rating > 70) & first_release_date < 946684800;
 limit 20;'
 JSON.parse(http.request(request_n64).body).each do |g|
-  Game.create(name: g['name'], price: rand(10..100), console: g['platforms'][0]['name'], is_game: true, seller: User.all.sample, description: g['summary'], release_date: g['first_release_date'], posted_date:  Time.now(), image: fix_cover_art(g['cover']['url']))
+  Game.create(name: g['name'], price: rand(10..100), console: g['platforms'][0]['name'], is_game: true, seller: User.all.sample, description: g['summary'], release_date: g['first_release_date'], posted_date:  Time.now.to_i, image: fix_cover_art(g['cover']['url']))
 end
 
 request_snes = Net::HTTP::Get.new(URI('https://api-v3.igdb.com/games'), {'user-key' => '3bb13b5f51ba32b2553da7cb0d920b0e'})
@@ -66,7 +66,7 @@ request_snes.body = 'fields name, platforms.name, first_release_date, rating, su
 where (platforms = 19 & rating > 70) & first_release_date < 946684800;
 limit 20;'
 JSON.parse(http.request(request_snes).body).each do |g|
-  Game.create(name: g['name'], price: rand(10..100), console: g['platforms'][0]['name'], is_game: true, seller: User.all.sample, description: g['summary'], release_date: g['first_release_date'], posted_date:  Time.now(), image: fix_cover_art(g['cover']['url']))
+  Game.create(name: g['name'], price: rand(10..100), console: g['platforms'][0]['name'], is_game: true, seller: User.all.sample, description: g['summary'], release_date: g['first_release_date'], posted_date:  Time.now.to_i, image: fix_cover_art(g['cover']['url']))
 end
 
 request_segagenesis = Net::HTTP::Get.new(URI('https://api-v3.igdb.com/games'), {'user-key' => '3bb13b5f51ba32b2553da7cb0d920b0e'})
@@ -74,13 +74,13 @@ request_segagenesis.body = 'fields name, platforms.name, first_release_date, rat
 where (platforms = 29 & rating > 70) & first_release_date < 946684800;
 limit 20;'
 JSON.parse(http.request(request_segagenesis).body).each do |g|
-  Game.create(name: g['name'], price: rand(10..100), console: g['platforms'][0]['name'], is_game: true, seller: User.all.sample, description: g['summary'], release_date: g['first_release_date'], posted_date:  Time.now(), image: fix_cover_art(g['cover']['url']))
+  Game.create(name: g['name'], price: rand(10..100), console: g['platforms'][0]['name'], is_game: true, seller: User.all.sample, description: g['summary'], release_date: g['first_release_date'], posted_date:  Time.now.to_i, image: fix_cover_art(g['cover']['url']))
 end
 
-request_atari2600 = Net::HTTP::Get.new(URI('https://api-v3.igdb.com/games'), {'user-key' => '3bb13b5f51ba32b2553da7cb0d920b0e'})
-request_atari2600.body = 'fields name, platforms.name, first_release_date, rating, summary, cover.url;
+request_dos = Net::HTTP::Get.new(URI('https://api-v3.igdb.com/games'), {'user-key' => '3bb13b5f51ba32b2553da7cb0d920b0e'})
+request_dos.body = 'fields name, platforms.name, first_release_date, rating, summary, cover.url;
 where (platforms = 13 & rating > 70) & first_release_date < 946684800;
 limit 20;'
-JSON.parse(http.request(request_atari2600).body).each do |g|
-  Game.create(name: g['name'], price: rand(10..100), console: g['platforms'][0]['name'], is_game: true, seller: User.all.sample, description: g['summary'], release_date: g['first_release_date'], posted_date:  Time.now(), image: fix_cover_art(g['cover']['url']))
+JSON.parse(http.request(request_dos).body).each do |g|
+  Game.create(name: g['name'], price: rand(10..100), console: g['platforms'][0]['name'], is_game: true, seller: User.all.sample, description: g['summary'], release_date: g['first_release_date'], posted_date:  Time.now.to_i, image: fix_cover_art(g['cover']['url']))
 end
