@@ -32,7 +32,7 @@ class Api::V1::GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:name, :description, :release_date, :posted_date, :seller_id, :price, :image, :console, :is_game)
+    params.require(:game).permit(:name, :description, :release_date, :posted_date, :seller_id, :price, :image, :console)
   end
 
   def find_game

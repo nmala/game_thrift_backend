@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_05_191803) do
+ActiveRecord::Schema.define(version: 2019_03_06_005535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 2019_03_05_191803) do
     t.integer "price"
     t.string "image"
     t.string "console"
-    t.boolean "is_game"
     t.integer "seller_id"
     t.string "posted_date"
     t.text "description"
