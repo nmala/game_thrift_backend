@@ -7,7 +7,7 @@ class Api::V1::ExchangesController < ApplicationController
   end
 
   def create
-    @exchange = exchange.create(exchange_params)
+    @exchange = Exchange.create(exchange_params)
     render json: @exchange, status: :ok
   end
 
