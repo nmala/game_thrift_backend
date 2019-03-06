@@ -18,7 +18,7 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:buyer_id, :seller_id, :game_id)
+    params.require(:user).permit(:username, :password, :email)
   end
 
   def find_user

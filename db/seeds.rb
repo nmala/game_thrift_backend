@@ -18,7 +18,7 @@ Game.destroy_all
 
 
 40.times do
-  User.create(name: Faker::Name.unique.name, password: rand(1000000..9999999), email: Faker::Internet.email)
+  User.create(username: Faker::Internet.unique.username, password: Faker::Internet.password, email: Faker::Internet.unique.email)
 end
 
 # g1 = Game.create(name: 'GTA5', seller_id: u2.id, price: 4, # g2 = Game.create(name: 'Bugdom', seller_id: u3.id, price: 4, # g3 = Game.create(name: 'Portal', seller_id: u3.id, price: 4, # g4 = Game.create(name: 'Half Life', seller_id: u1.id, price: 4, 
